@@ -1,4 +1,3 @@
-// import libraries
 const path = require('path');
 const express = require('express');
 const compression = require('compression');
@@ -9,7 +8,6 @@ const mongoose = require('mongoose');
 const expressHandlebars = require('express-handlebars');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
-
 const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/DomoMaker';
 
 mongoose.connect(dbURL, (err) => {
@@ -19,10 +17,10 @@ mongoose.connect(dbURL, (err) => {
   }
 });
 
-// pull in routes
 const router = require('./router.js');
 
 const app = express();
+
 app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
 app.use(favicon(`${__dirname}/../hosted/img/favicon.png`));
 app.use(compression());
@@ -40,5 +38,6 @@ app.listen(port, (err) => {
   if (err) {
     throw err;
   }
+
   console.log(`Listening on port ${port}`);
 });
