@@ -8,9 +8,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const expressHandlebars = require('express-handlebars');
 
-const port = process.env.POST || process.env.NODE_PORT || 3000;
+const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
-const dbURL = process.env.MOGODB_URI || 'mongodb://localhost/DomoMaker';
+const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/DomoMaker';
 
 mongoose.connect(dbURL, (err) => {
   if (err) {
@@ -19,7 +19,7 @@ mongoose.connect(dbURL, (err) => {
   }
 });
 
-// pull in our routes
+// pull in routes
 const router = require('./router.js');
 
 const app = express();
