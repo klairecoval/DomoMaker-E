@@ -23,10 +23,10 @@ mongoose.connect(dbURL, (err) => {
 
 let redisURL = {
   hostname: '',
-  port: , // port number from RedisLabs
+  port: 18254, // port number from RedisLabs
 };
 
-let redisPASS = '';
+let redisPASS = 'p16zADmEqvo9hPBfCaFNDBhJRWKslai9';
 
 if(process.env.REDISCLOUD_URL) {
   redisURL = url.parse(process.env.REDISCLOUD_URL);
