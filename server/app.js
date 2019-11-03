@@ -29,7 +29,7 @@ let redisURL = {
 
 let redisPASS = 'p16zADmEqvo9hPBfCaFNDBhJRWKslai9';
 
-if(process.env.REDISCLOUD_URL) {
+if (process.env.REDISCLOUD_URL) {
   redisURL = url.parse(process.env.REDISCLOUD_URL);
   redisPASS = redisURL.auth.split(':')[1];
 }
@@ -64,11 +64,11 @@ app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/../views`);
 app.use(cookieParser());
 
-//csrf must come after cookieparser
+// csrf must come after cookieparser
 // app.use(session) should come before router
 app.use(csrf());
 app.use((err, req, res, next) => {
-  if(err.code !== 'EBADCSRFTOKEN') return next(err);
+  if (err.code !== 'EBADCSRFTOKEN') return next(err);
   console.log('Missing CSRF token');
   return false;
 });
