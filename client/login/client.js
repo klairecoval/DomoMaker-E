@@ -101,7 +101,7 @@ const setup = (csrf) => {
         return false;
     });
 
-    createLoginWindow(csrf); //default view
+    createLoginWindow(csrf);
 };
 
 const getToken = () => {

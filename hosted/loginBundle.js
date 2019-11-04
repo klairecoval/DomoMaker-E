@@ -117,7 +117,7 @@ var setup = function setup(csrf) {
         return false;
     });
 
-    createLoginWindow(csrf); //default view
+    createLoginWindow(csrf);
 };
 
 var getToken = function getToken() {
