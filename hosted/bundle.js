@@ -17,6 +17,15 @@ var handleDomo = function handleDomo(e) {
     return false;
 };
 
+var deleteDomo = function deleteDomo(e) {
+    var id = e.target.parentElement.querySelector('.domoId').innerText;
+    var _csrf = document.querySelector('input[name="_csrf"]').value;
+
+    sendAjax('DELETE', '/deleteDomo', { id: id, _csrf: _csrf }, function (data) {
+        loadDomosFromServer();
+    });
+};
+
 var DomoForm = function DomoForm(props) {
     return React.createElement(
         'form',
@@ -87,6 +96,16 @@ var DomoList = function DomoList(props) {
                 ' Height: ',
                 domo.height,
                 ' '
+            ),
+            React.createElement(
+                'button',
+                { className: 'deleteDomo', onClick: deleteDomo },
+                'Remove'
+            ),
+            React.createElement(
+                'span',
+                { className: 'domoId' },
+                domo._id
             )
         );
     });

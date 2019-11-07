@@ -247,9 +247,13 @@ h3.domoName {
 h3.domoAge {
     float:right;
     text-align: left;
-    width: 100px;
     font-weight: bold;
     padding-right: 40px;
+    font-size: 1.5em;
+}
+
+h3.domoHeight {
+    font-weight: bold;
     font-size: 1.5em;
 }
 
@@ -259,4 +263,20 @@ h3.domoAge {
 
 .domo:last-child {
     margin-bottom:10px;
+}
+
+button.deleteDomo {
+    background: #55acee;
+    border: 1px solid #338acc;
+    color: #ffffff;
+    float:right;
+}
+
+button.deleteDomo:hover{
+    background: #338acc;
+    transition: background 0.2s;
+}
+
+.domoId {
+    display: none;
 }

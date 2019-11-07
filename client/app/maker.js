@@ -15,6 +15,15 @@ const handleDomo = (e) => {
     return false;
 };
 
+const deleteDomo = e => {
+	const id = e.target.parentElement.querySelector('.domoId').innerText;
+	const _csrf = document.querySelector('input[name="_csrf"]').value;
+	
+	sendAjax('DELETE', '/deleteDomo', {id, _csrf}, data => {
+		loadDomosFromServer();
+	});
+};
+
 const DomoForm = (props) => {
     return (
         <form id='domoForm'
@@ -51,6 +60,8 @@ const DomoList = function(props) {
                 <h3 className='domoName'> Name: {domo.name} </h3>
                 <h3 className='domoAge'> Age: {domo.age} </h3>
                 <h3 className='domoHeight'> Height: {domo.height} </h3>
+                <button className="deleteDomo" onClick={deleteDomo}>Remove</button>
+                <span className="domoId">{domo._id}</span>
             </div>
         );
     });

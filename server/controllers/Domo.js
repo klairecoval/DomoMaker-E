@@ -57,6 +57,22 @@ const getDomos = (request, response) => {
   });
 };
 
+const deleteDomo = (req, res) => {
+  if (!req.body.id) {
+    return res.status(400).json({ error: 'RAWR! Domo name required to delete' });
+  }
+
+  return Domo.DomoModel.deleteById(req.body.id, (err) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ error: 'An error ocurred' });
+    }
+
+    return res.status(200).json({ msg: 'Domo deleted successfully' });
+  });
+};
+
 module.exports.make = makeDomo;
 module.exports.getDomos = getDomos;
 module.exports.makerPage = makerPage;
+module.exports.deleteDomo = deleteDomo;
